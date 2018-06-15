@@ -1,0 +1,43 @@
+{namespace a=CGB\Accessmanager\ViewHelpers}
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+
+<!-- docref BEGIN: EXT:relax5event/Resources/Private/Partials/Address/ShowOneProjectAddresses.html v8.7 -->
+<!-- rev: 2017-07-25 -->
+
+<div class="rlx5-coredata-single rlx5-event-address rlx5-disable{location.address.allowMail}" id="address_{location.address.uid}">
+  <div class="">
+    <f:image src="{location.address.type.image.uid}" alt="" treatIdAsReference="TRUE" style="vertical-align: middle;" />
+    <span reference="address_{location.address.uid}_country">{location.address.country}</span>
+    <span reference="address_{location.address.uid}_zip">{location.address.zip}</span>
+    <span reference="address_{location.address.uid}_city">{location.address.city -> f:format.crop(maxCharacters: 15, respectWordBoundaries: false)}</span>, 
+    <span reference="address_{location.address.uid}_address">{location.address.address -> f:format.crop(maxCharacters: 15, respectWordBoundaries: false)}</span>
+    <span reference="address_{location.address.uid}_number">{location.address.number}</span>
+    <span reference="address_{location.address.uid}_muberAdditions">{location.address.numberAdditions}</span>
+  </div>
+  <div class="rlx5-buttons"><a:actionicon 
+      uri="{h:uri.ajaxAction(
+        extensionName: 'Relax5event',
+        controller: 'Location',
+        pluginName: 'Event',
+        action: 'edit',
+        arguments: '{location:location}'
+      )}"
+      alturi="{h:uri.ajaxAction(
+        extensionName: 'Relax5event',
+        controller: 'Location',
+        pluginName: 'Event',
+        action: 'edit',
+        arguments: '{location:location}'
+      )}"
+      
+      class="modalDialog rlx5-button rlx5-edit"
+      title="{location.name}" 
+      domainModelObject="CGB\\Relax5event\\Domain\\Model\\Location" 
+      intendedAction="editorshow"
+      permissions="{location.address.parent.permissions}" 
+      user="{location.address.parent.owner}" 
+      group="{location.address.parent.usergroup}"
+    /></div>
+</div>
+
+<!-- docref END: EXT:relax5event/Resources/Private/Partials/Address/ShowOneProjectAddresses.html v8.7 -->

@@ -1,0 +1,26 @@
+{namespace rlx5=CGB\Relax5core\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace a=CGB\Accessmanager\ViewHelpers}
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+  <f:layout name="Default" />
+
+  <f:section name="main">
+    <fieldset class="rlx5-envelope-fieldset">
+      <legend id="rlx5-datatop" class="rlx5-focusperson">
+        <span>{event.uid}</span>
+        <span reference="event_{event.uid}_name">{event.name}</span>
+        <span reference="event_{event.uid}_date">{event.date->f:format.date()}</span>
+      </legend>
+
+      <f:render partial="Event/ShowData" arguments="{_all}" />
+
+    </fieldset>
+
+    <p class="footnote">docref: EXT:relax5event/Resources/Private/Templates/Event/Show.html v8.7</p>
+
+  </f:section>
+</html>
+  

@@ -1,0 +1,59 @@
+{namespace r5p=CGB\Relax5event\ViewHelpers}
+{namespace a=CGB\Accessmanager\ViewHelpers}
+
+<!-- docref BEGIN: EXT:relax5event/Resources/Private/Partials/Event/ShowData.html v8.7 -->
+<!-- rev: 2018-01-25 -->
+
+<div class="rlx5-project-data-box-outer rlx5-project-datagrid-container">
+  <f:render partial="General/ShowInfo" arguments="{item:event, itemtype:'project'}" />
+  <f:if condition="{event.uid}">
+    <f:render partial="Event/ShowHeader" arguments="{_all}" />    
+  </f:if>
+
+  <div class="rlx5-projectgrid-data">
+    <f:render partial="Event/ShowEventData" arguments="{_all}" />
+  </div>
+  
+  <div class="rlx5-projectgrid-product">
+    <f:render partial="Event/SendData" arguments="{_all}" />
+  </div>
+  
+  <div class="rlx5-eventgrid-entries">
+    <v:variable.register.set name="dtfilter" value="event:{event.uid}"></v:variable.register.set>
+    <v:content.render contentUids="{0:'{settings.entriesListCid}'}" />
+    
+    <f:if condition="{a:permission(domainModelObject:'Event',intendedAction:'write',permissions:'{event.permissions}',user:feUser,group:feUser.firstgroup)}">
+      <f:link.page 
+        class="ui-button selectWindow"
+        target="_new" 
+        pageUid="{settings.selectPersonPid}" 
+      >
+        <f:image src="EXT:core/Resources/Public/Icons/T3Icons/actions/actions-add.svg" alt="" class="rlx5-button" />
+      </f:link.page>
+      
+    </f:if>
+
+    <a:actionicon 
+      uri="{h:uri.ajaxAction(
+        extensionName: 'Relax5event',
+        controller: 'Event',
+        pluginName: 'Event',
+        action: 'addEntry',
+        arguments: '{person: person, event:event}'
+      )}"
+
+      id="addEntry" 
+      style="display: none"
+      domainModelObject="Event" 
+      intendedAction="add"
+      child="Entry"
+      permissions="{event.permissions}" 
+      user="{feUser}" 
+      group="{feUser.firstgroup}"
+      additionalAttributes="{prefix: 'tx_relax5event_event', event: event.uid, person: person.uid, onsuccess: 'window.opener.location.reload();window.close();'}"
+    />
+  </div>
+
+</div>
+
+<!-- docref END: EXT:relax5event/Resources/Private/Partials/Event/ShowData.html v8.7 -->

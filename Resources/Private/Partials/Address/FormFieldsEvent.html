@@ -1,0 +1,133 @@
+{namespace r5f=CGB\Relax5validator\ViewHelpers}
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="rlx5-modalform-stretcher" style="height: 0; min-width: 500px;"></div>  
+  
+<!-- 1: country | zip | city -->
+<span class="rlx5-span-as-label">
+  <label for="country" class="rlx5-min">
+    <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_address.country" />
+  </label> 
+  | 
+  <label for="zip" class="rlx5-min">
+    <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_address.zip" />
+  </label>
+  |
+  <label for="city" class="rlx5-min">
+    <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_address.city" />
+  </label>
+</span>
+
+<r5f:form.textfield 
+  property="address.country" 
+  value="{location.address.country}" 
+  id="country" 
+  class="rlx5-inputmin rlx5-10 geocode-on-blur" 
+  validatorContext="UpdateAddress" 
+  additionalAttributes="{
+    data-autocomplete-id:'country'
+  }"
+/>
+
+<r5f:form.textfield 
+  property="address.zip" 
+  value="{location.address.zip}" 
+  id="zip" 
+  class="rlx5-inputmin rlx5-20 geocode-on-blur" 
+  validatorContext="UpdateAddress" 
+  additionalAttributes="{
+    data-autocomplete: 1, 
+    data-autocomplete-id: 'zip',
+    data-autocomplete-condition: 'countryCode equals country;zip like TERM',
+    data-autocomplete-repository: 'CGB\Relax5core\Domain\Repository\ZipCatalogueRepository',
+    data-autocomplete-findmethod: 'findByZip',
+    data-autocomplete-select: '#city=city;#state=state',
+    data-autocomplete-focus: '#address',
+    data-autocomplete-uri: '{h:uri.ajaxAction(extensionName: \\'Relax5core\\',controller: \\'Address\\',pluginName: \\'Core\\', action: \\'autocomplete\\')}'
+  }"
+/>
+
+<r5f:form.textfield 
+  property="address.city" 
+  value="{location.address.city}" 
+  id="city" 
+  class="rlx5-inputmin rlx5-30 geocode-on-blur" 
+  validatorContext="UpdateAddress" 
+  additionalAttributes="{
+    data-autocomplete: 1, 
+    data-autocomplete-id: 'city',
+    data-autocomplete-condition: 'countryCode equals country;city like TERM',
+    data-autocomplete-repository: 'CGB\Relax5core\Domain\Repository\ZipCatalogueRepository',
+    data-autocomplete-findmethod: 'findByCity',
+    data-autocomplete-select: '#state=state;#zip=zip',
+    data-autocomplete-focus: '#address',
+    data-autocomplete-uri: '{h:uri.ajaxAction(extensionName: \\'Relax5core\\',controller: \\'Address\\',pluginName: \\'Core\\', action: \\'autocomplete\\')}'
+  }"
+/>
+<br />
+
+<!-- 2: address | number | number_additions -->
+<span class="rlx5-span-as-label">
+  <label for="address" class="rlx5-min">
+    <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_address.address" />
+  </label>
+  | 
+  <label for="number" class="rlx5-min">
+    <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_address.number" />
+  </label>
+  | 
+  <label for="numberAdditions" class="rlx5-min">
+    <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_address.number_additions" />
+  </label>
+</span>
+
+<r5f:form.textfield 
+  property="address.address" 
+  value="{location.address.address}" 
+  id="address" 
+  class="rlx5-inputmin rlx5-40 geocode-on-blur" 
+  validatorContext="UpdateAddress" 
+  additionalAttributes="{
+    data-autocomplete: 1, 
+    data-autocomplete-id:'address'
+    data-autocomplete-condition: 'countryCode equals country;zip equals zip;address like TERM',
+    data-autocomplete-repository: 'CGB\Relax5core\Domain\Repository\AddressCatalogueRepository',
+    data-autocomplete-findmethod: 'findByCountryAndZip',
+    data-autocomplete-select: '#address=label',
+    data-autocomplete-focus: '#number',
+    data-autocomplete-uri: '{h:uri.ajaxAction(extensionName: \\'Relax5core\\',controller: \\'Address\\',pluginName: \\'Core\\', action: \\'autocomplete\\')}'
+  }"
+/>
+
+<r5f:form.textfield 
+  property="address.number" 
+  value="{location.address.number}" 
+  id="number" 
+  class="rlx5-inputmin rlx5-10 geocode-on-blur" 
+  validatorContext="UpdateAddress" />
+<r5f:form.textfield 
+  property="address.numberAdditions" 
+  value="{location.address.numberAdditions}" 
+  id="numberAdditions" 
+  class="rlx5-inputmin rlx5-10" 
+  validatorContext="UpdateAddress" />
+<br />
+
+<!-- 9: map -->
+<div id="map" class="googlemap" style="width: 100%; height: 300px; border: 1px solid #a9a9a9; padding: 2px; margin-bottom: .5em; "></div>
+
+<div class="rlx5-divider"></div>
+
+<script>
+  $(document).ready(function() {
+    activateJte('.rlx5-jte', '.rlx5-form');
+    activateCollapser('.rlx5-collapser', '.rlx5-form', true);
+    activateMap();
+    showErrors();
+    
+    activateAutocomplete();
+  });
+</script>
+
+</html>

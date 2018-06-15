@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-10-20T07:42:12Z" product-name="relax5event">
+		<header/>
+		<body>
+			<trans-unit id="registered.description">
+				<source>Registered</source>
+			</trans-unit>
+			<trans-unit id="participants.description">
+				<source>Participants</source>
+			</trans-unit>
+			<trans-unit id="phone.description">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="email.description">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="reminder.description">
+				<source>Reminder</source>
+			</trans-unit>
+			<trans-unit id="message.description">
+				<source>Reminder</source>
+			</trans-unit>
+			<trans-unit id="result.description">
+				<source>Result</source>
+			</trans-unit>
+			<trans-unit id="person.description">
+				<source>Person</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

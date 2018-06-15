@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-10-20T14:37:04Z" product-name="relax5event">
+		<header/>
+		<body>
+			<trans-unit id="tx_relax5event_domain_model_event">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_event.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_event.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_event.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_event.max_participants">
+				<source>Max Participants</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_event.min_participants">
+				<source>Min Participants</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_event.location_text">
+				<source>Location Text</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_event.location">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_event.entries">
+				<source>Entries</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_entry">
+				<source>Entry</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_entry.registered">
+				<source>Registered</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_entry.participants">
+				<source>Participants</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_entry.phone">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_entry.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_entry.reminder">
+				<source>Reminder</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_entry.message">
+				<source>Message</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_entry.result">
+				<source>Result</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5event_domain_model_entry.person">
+				<source>Person</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

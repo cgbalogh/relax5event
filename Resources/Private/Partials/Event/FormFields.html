@@ -1,0 +1,66 @@
+{namespace a=CGB\Accessmanager\ViewHelpers}
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+{namespace r5f=CGB\Relax5validator\ViewHelpers}
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  
+  <div class="rlx5-modalform-stretcher" style="height: 0; min-width: 400px; max-width: 600px;"></div>  
+  
+  <label for="name">
+	<f:translate key="tx_relax5event_domain_model_event.name" /> 
+  </label>
+  <f:form.textfield property="name" /><br />
+    
+  <label for="description" class="rlx5-top">
+	<f:translate key="tx_relax5event_domain_model_event.description" />
+  </label>
+  <f:form.textarea property="description" cols="40" rows="15" class="rlx5-jte" /><br />
+  
+  <label for="date">
+    <f:translate key="tx_relax5event_domain_model_event.date" />
+  </label>
+  <r5f:form.textfield 
+    property="date" 
+    value="{event.date->f:format.date(format: '{f:translate(key: \'LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_general.datetime_format\')}')}" 
+    validatorContext="UpdateEvent" 
+    class="datetimepicker" 
+  /><br />
+
+  
+  <label for="maxParticipants">
+	<f:translate key="tx_relax5event_domain_model_event.max_participants" />
+  </label>
+  <f:form.textfield property="maxParticipants" /><br />
+  
+  <label for="minParticipants">
+	<f:translate key="tx_relax5event_domain_model_event.min_participants" />
+  </label>
+  <f:form.textfield property="minParticipants" /><br />
+
+  <label for="locationText">
+	<f:translate key="tx_relax5event_domain_model_event.location_text" /> 
+  </label>
+  <f:form.textfield property="locationText" /><br />
+  
+
+  <label for="eventLocation" class="rlx5-top">
+    <f:translate key="tx_relax5event_domain_model_event.location" />
+  </label>
+  <f:form.select 
+    property="location"
+    options="{possibleAddresses}" 
+    optionLabelField="name" 
+    optionValueField="uid" 
+    sortByOptionLabel="true"
+    prependOptionLabel=""
+    prependOptionValue="0"
+    size="1" 
+  />
+  
+  <label for="message" class="rlx5-top">
+    <f:translate key="tx_relax5event_domain_model_event.message" />
+  </label>
+  <f:form.textarea property="message" cols="40" rows="25" /><br />
+
+  
+</html>

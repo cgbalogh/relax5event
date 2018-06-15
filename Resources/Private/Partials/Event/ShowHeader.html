@@ -1,0 +1,62 @@
+{namespace a=CGB\Accessmanager\ViewHelpers}
+
+<!-- docref BEGIN: EXT:relax5event/Resources/Private/Partials/Person/ShowHeader.html v8.6 -->
+<!-- rev: 2017-04-30 -->
+
+<div class="rlx5-item-project-header rlx5-project rlx5-core-data-box {f:if(condition: '{event}',then:'rlx5-ispopulated',else:'rlx5-isempty')} draggable" eventuid="{event.uid}">
+  <div class="rlx5-coredata-single rlx5-project-headerdata">
+    <div class="">
+      <span reference="event_{event.uid}_name">{event.name}</span>
+    </div>
+
+    <div class="rlx5-buttons">
+      <a:actionicon 
+        uri="{h:uri.ajaxAction(
+          extensionName: 'Relax5event',
+          controller: 'Event',
+          pluginName: 'Event',
+          action: 'edit',
+          arguments: '{event:event}'
+        )}"
+        alturi="{h:uri.ajaxAction(
+          extensionName: 'Relax5event',
+          controller: 'Event',
+          pluginName: 'Event',
+          action: 'show',
+          arguments: '{event:event}'
+        )}"
+        class="modalDialog rlx5-button rlx5-edit"
+        title="{event.uid} {event.productgroup.name} {event.product.name}" 
+        domainModelObject="Event" 
+        intendedAction="editorshow"
+        permissions="{event.permissions}" 
+        user="{event.owner}" 
+        group="{event.usergroup}"
+        additionalAttributes="{
+          onshow: '',
+          onsave: 'location.reload();',
+          wwidth:' 700px'
+        }"
+        
+      />
+
+      <a:actionicon 
+        class="modalConfirm rlx5-button rlx5-delete" 
+        title="{event.uid} {event.productgroup.name} {event.product.name}" 
+        domainModelObject="Event" 
+        intendedAction="delete"
+        permissions="{event.permissions}" 
+        user="{event.owner}" 
+        group="{event.usergroup}"
+        pageType="{f:cObject(typoscriptObjectPath:'lib.relax5core.ajax')}"
+        extensionName="Relax5event"
+        pluginName="Ajax" 
+        controller="Event"
+        arguments="{event: event}"
+      />
+      
+    </div>
+  </div>
+</div>
+
+<!-- docref END: EXT:relax5event/Resources/Private/Partials/Person/ShowHeader.html v8.6 -->

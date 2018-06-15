@@ -1,0 +1,47 @@
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+  <f:section name="main">
+    <div class="rlx5-message-container">
+      <f:flashMessages />
+      <f:render partial="FormErrors" arguments="{object:Event}" />
+    </div>
+
+    <f:form action="update" enctype="multipart/form-data" name="event" object="{event}" class="rlx5-form" 
+      additionalAttributes="{data-ajax-uri: '{h:uri.ajaxAction(extensionName: \\'Relax5event\\',controller: \\'Event\\',pluginName: \\'Event\\', action: \\'update\\')}'}">
+      
+      <div class="rlx5-modalform-stretcher" style="height: 0; min-width: 500px;"></div>  
+      
+      <f:render partial="Event/FormFields" arguments="{_all}" />
+      
+    </f:form>
+        
+    <p class="footnote">docref: EXT:relax5event/Resources/Private/Templates/Event/Edit.html v8.7</p>
+    
+    <!-- works only within modal dialog window -->
+    <script type="text/javascript">
+      <f:format.cdata>
+        $(document).ready(function() {
+          activateDatetimepicker();
+          showErrors();
+          activateJte('.rlx5-jte', '.rlx5-form');
+        });
+      </f:format.cdata>
+    </script>
+    
+    
+  </f:section>
+</html>

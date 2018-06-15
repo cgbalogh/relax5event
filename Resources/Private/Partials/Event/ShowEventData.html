@@ -1,0 +1,61 @@
+<!-- docref BEGIN: EXT:relax5event/Resources/Private/Partials/Event/ShowEventData.html v8.7 -->
+<!-- rev: 2018-01-25 -->
+
+<div class="rlx5-item-project-data rlx5-{itemtype} rlx5-core-data-box">
+  <table class="tx-relax5project">
+    <!--
+    <tr>
+      <td><f:translate key="tx_relax5event_domain_model_event.name" /></td>
+      <td>{event.name}</td>
+    </tr>
+    -->
+    <tr>
+      <td><f:translate key="tx_relax5event_domain_model_event.description" /></td>
+      <td><f:format.html>{event.description}</f:format.html></td>
+    </tr>
+    <tr>
+      <td><f:translate key="tx_relax5event_domain_model_event.date" /></td>
+      <td>
+        {event.date -> f:format.date(format: '{f:translate(key: \'LLL:EXT:relax5core/Resources/Private/Language/locallang.xml:tx_relax5core_general.datetime_format\')}')}
+      </td>
+    </tr>
+    <tr>
+      <td><f:translate key="tx_relax5event_domain_model_event.location" /></td>
+      <td>{event.location.name}</td>
+    </tr>
+    <tr>
+      <td><f:translate key="tx_relax5event_domain_model_event.max_participants" /></td>
+      <td class="rlx5-r" style="padding-right: 50%;">{event.maxParticipants}</td>
+    </tr>
+    <tr>
+      <td><f:translate key="tx_relax5event_domain_model_event.min_participants" /></td>
+      <td class="rlx5-r" style="padding-right: 50%;">{event.minParticipants}</td>
+    </tr>
+    <tr>
+      <td><f:translate key="tx_relax5event_domain_model_event.registered_total" /></td>
+      <td class="rlx5-r" style="padding-right: 50%;">{event.registeredTotal}</td>
+    </tr>
+    <tr>
+      <td><f:translate key="tx_relax5event_domain_model_event.participants_total" /></td>
+      <td class="rlx5-r" style="padding-right: 50%;">{event.participantsTotal}</td>
+    </tr>
+    <tr>
+      <td><f:translate key="tx_relax5event_domain_model_event.location" /></td>
+      <td>
+        <div class="rlx5-event-addresses rlx5-item-project-addresses rlx5-event rlx5-core-data-box {f:if(condition: '{event.location}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+          <div id="eventlocation" class="rlx5-coredata-block">
+            <div id="address_{event.location.address.uid}" class="rlx5-address" uid="{event.location.address.uid}">
+              <f:render partial="Address/ShowOneEventAddress" arguments="{location:event.location}" />
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- docref END: EXT:relax5event/Resources/Private/Partials/Event/ShowEventData.html v8.7 -->

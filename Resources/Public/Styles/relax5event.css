@@ -1,0 +1,417 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10.07.2017, 19:44:49
+    Author     : cbalogh
+*/
+
+.rlx5-event-addresses .rlx5-coredata-single {
+  min-height: 0;
+}
+
+.rlx5-event-addresses .rlx5-coredata-single img {
+  height: 14px;
+  width: 14px;
+}
+
+.rlx5-event-address {
+  border: 1px solid transparent;
+  padding: 2px 2px;
+  margin-bottom: 2px;
+  font-size: 85%;
+}
+
+.rlx5-event-address-selected {
+  border: 1px solid red;
+}
+
+.rlx5-event-address .rlx5-buttons span {
+  display: block;
+  float: right;
+  margin-left: .5em;
+}
+
+.rlx5-event-datagrid-container {
+  display: grid;
+  justify-content: stretch;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(5, auto);
+  grid-gap: 4px 4px;
+  /* grid-gap: .5% .5%; */
+}
+
+.rlx5-event-datagrid-container .rlx5-item-event-info       { grid-column-start: 1; grid-column-end: 2; grid-row-start: 1;  grid-row-end: 2; }
+.rlx5-event-datagrid-container .rlx5-item-appointment-info   { grid-column-start: 1; grid-column-end: 2; grid-row-start: 1;  grid-row-end: 2; }
+
+.rlx5-event-datagrid-container .rlx5-item-person-info        { grid-column-start: 3; grid-column-end: 4; grid-row-start: 1;  grid-row-end: 2; }
+.rlx5-event-datagrid-container .rlx5-item-company-info       { grid-column-start: 3; grid-column-end: 4; grid-row-start: 1;  grid-row-end: 2; }
+
+.rlx5-event-datagrid-container .rlx5-item-event-header     { grid-column-start: 1; grid-column-end: 2; grid-row-start: 2;  grid-row-end: 3; }
+.rlx5-event-datagrid-container .rlx5-item-appointment-header     { grid-column-start: 1; grid-column-end: 2; grid-row-start: 2;  grid-row-end: 3; }
+.rlx5-event-datagrid-container .rlx5-item-person-header      { grid-column-start: 3; grid-column-end: 4; grid-row-start: 2;  grid-row-end: 3; }
+.rlx5-event-datagrid-container .rlx5-item-company-header     { grid-column-start: 3; grid-column-end: 4; grid-row-start: 2;  grid-row-end: 3; }
+
+.rlx5-eventgrid-data     { grid-column-start: 1; grid-column-end: 2; grid-row-start: 3;  grid-row-end: 4; }
+.rlx5-eventgrid-product  { grid-column-start: 2; grid-column-end: 3; grid-row-start: 3;  grid-row-end: 4; }
+.rlx5-eventgrid-entries  { grid-column-start: 1; grid-column-end: 4; grid-row-start: 4;  grid-row-end: 5; }
+
+.rlx5-eventgrid-parent { grid-column-start: 3; grid-column-end: 4; grid-row-start: 3;  grid-row-end: 7; }
+
+table.rlx5-eventstates {
+  width: 100%;
+  font-size: 13px;
+  line-height: normal;
+}
+
+table.rlx5-eventstates tr th, 
+table.rlx5-eventstates tr td {
+  padding: .1em .3em;
+}
+
+table.rlx5-eventstates tr td:nth-child(1) {
+  padding-right: .5em;
+}
+
+table.rlx5-eventstates tr td:nth-child(2) {
+
+}
+
+.rlx5-eventstate-due {
+  color: red;
+}
+
+.rlx5-eventstate-forward {
+  color: blue;
+}
+
+.rlx5-eventstate-done {
+  color: green;
+}
+
+table.rlx5-eventstates, 
+table.tx-relax5event {
+  margin-bottom: 1em;
+}
+
+table.tx-relax5event {
+  width: 90%;
+}
+
+table.tx-relax5event tr td:nth-child(1) {
+  font-weight: bold;
+  padding-right: .5em;
+  width: 33%;
+  border-bottom: 1px solid #eeeeee;
+}
+
+table.tx-relax5event tr td:nth-child(2) {
+  width: 67%;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.rlx5-buttons-td {
+  float: right;
+  text-align: right;
+  padding: 3px;
+}
+
+.rlx5-buttons-td img {
+  height: 16px;
+  width: auto;
+}
+
+.rlx5-eventstates-buttons {
+  padding: 0 !important;
+}
+
+.rlx5-buttons-td:after {
+  content: '.';
+  visibility: hidden;
+  height: 0;
+  display: block;
+  clear: both;
+}
+
+table.rlx5-eventstates .rlx5-eventstates-date,
+table.rlx5-eventstates .rlx5-eventstates-usergroup,
+table.rlx5-eventstates .rlx5-eventstates-owner {
+  text-align: center;
+}
+
+td.rlx5-eventstates-date {
+  white-space: nowrap;
+}
+
+.rlx5-eventgrid-data table td p {
+  margin: 0;
+}
+
+td.rlx5-innercell {
+  border-right: 1px solid white;
+} 
+
+table.rlx5-eventstate-appointments {
+  margin-top: .2em;
+  width: 100%;
+}
+
+.rlx5-eventstate-appointments > tbody > tr {
+  border-top: 1px solid white;
+}
+
+@media (max-width: 820px) {
+  table.rlx5-eventstates th,
+  table.rlx5-eventstates td {
+    display: block;
+  }
+
+  table.rlx5-eventstates th:first-child,
+  table.rlx5-eventstates td:first-child {
+    display: table-cell;
+  }
+}
+
+.rlx5-event-checkappointment {
+  display: none;
+}
+
+tr.rlx5-appointments-when-1 {
+  background-color: #f77;
+  color: #eee;
+  cursor: pointer;
+}
+
+tr.rlx5-event-selectedappointment {
+  /* background-color: #f55;
+  color: #eee; */
+  /* border: 3px solid red !important; */
+}
+
+tr.rlx5-event-selectedappointment > td {
+  /* background-color: #f55;
+  color: #eee; */
+  background-color: rgba(240,52,52,.8);
+  color: #eee;
+}
+
+tr.rlx5-appointments-when1 {
+  
+}
+
+tr.rlx5-appointments-when0 {
+  background-color: #cf9;
+}
+
+table.rlx5-eventstate-appointments td {
+  vertical-align: middle;
+}
+
+.disabled {
+  color: #bbb;
+}
+
+a.rlx5-event-link li {
+  list-style: none;
+  margin-bottom: 4px;
+  padding: 2px;
+  
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;  
+}
+
+a.rlx5-event-link li:hover {
+  list-style: none;
+  
+  filter:alpha(opacity=60); /* IE */
+  -moz-opacity:0.6; /* Mozilla */
+  opacity: 0.6; /* CSS3 */  
+}
+
+a.rlx5-event-link:hover {
+  text-decoration: none !important;
+  font-style: italic !important;
+}
+
+tr.dt-event td {
+  background-color: #cf9;
+}
+
+tr.rlx5-event-selectedappointment td:first-child {
+  position: relative;
+}
+
+tr.rlx5-event-selectedappointment td:first-child:before {
+  content: '->';
+  display: block;
+  position: absolute;
+  left: -20px;
+}
+
+tr.rlx5-event-staterejected1 > td:nth-child(1),
+tr.rlx5-event-staterejected1 > td:nth-child(2),
+tr.rlx5-event-staterejected1 > td:nth-child(3)
+{
+  text-decoration: line-through;
+}
+
+table.rlx5-eventstate-additionalinfos {
+  width: 100%;
+}
+
+table.rlx5-eventstate-additionalinfos td {
+  vertical-align: top;
+}
+
+.rlx5-rightoutercell {
+  width: 0;
+}
+
+td.rlx5-addinfo_title {
+  font-size: 86%;
+  font-style: italic;
+  width: 20%;
+  text-align: right;
+  line-height: 170%;
+}
+
+td.rlx5-addinfo_value {
+  width: 60%;
+}
+
+table.rlx5-eventstate-additionalinfos tr td {
+  border-bottom: 1px solid white;
+}
+
+table.rlx5-eventstate-additionalinfos tr:last-child td {
+  border-bottom: none;
+}
+
+table.rlx5-eventstate-additionalinfos tr td p {
+  margin: 0;
+}
+
+#eventList h3 {
+  background-color: #dddddd;
+}
+
+tr.rlx5-event-cost-void1 td {
+  text-decoration: line-through;
+}
+
+td.rlx5-eventstates-name {
+  white-space: nowrap;
+}
+
+.rlx5-metabutton {
+  padding: 3px 6px;
+}
+
+th.rotate {
+  /* Something you can count on */
+  vertical-align: bottom;
+}
+
+th.rotate > div {
+  white-space: wrap;
+  /* transform: */
+    /* Magic Numbers */
+    /* translate(45px, 51px)
+    /* 45 is really 360 - 45 */
+    /* rotate(315deg); */
+  /* width: 30px; */
+  border-bottom: 1px solid #ccc;
+  padding: 5px 10px;
+  text-align: center;
+  
+}
+th.rotate > div > span {
+}
+
+table.rlx5-event-statetable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.rlx5-event-statetable td,
+.rlx5-event-statetable th {
+  min-width: 1.3em;
+  min-height: 1.3em;
+  border: 1px solid #bbb;
+  padding: 2px 6px;
+}
+
+div.rlx5-event-currentstate {
+  width: 4px;
+  height: 4px;
+  border-left: 4px solid red;
+  border-top: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  position: absolute;
+  margin-left: -9px;
+  margin-top: 3px;
+}
+
+
+table.rlx5-event-cost, table.rlx5-event-role {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.rlx5-event-role {
+  width: 330px !important;
+  margin: 1em 0;
+}
+
+table.rlx5-event-cost tr.rlx5-event-cost_void1 td {
+  text-decoration: line-through;
+  background-color: #f0b7c1;
+}
+
+table.rlx5-event-cost tr.rlx5-event-cost_confirmed1 td {
+  background-color: #c8f0c0;
+}
+
+table.rlx5-event-cost td, table.rlx5-event-cost th,
+table.rlx5-event-role td, table.rlx5-event-role th {
+  padding: 2px;
+  border: 1px solid #bebebe;
+}
+
+table.rlx5-event-cost td.rlx5-event-cost_left {
+  
+}
+
+table.rlx5-event-cost td.rlx5-event-cost_currency {
+  text-align: right
+}
+
+table.rlx5-event-cost td.rlx5-event-cost_center {
+  text-align: center;
+  
+}
+
+.rlx5-event-addresses .rlx5-coredata-single:hover {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eaeef4+0,99b2d3+100 */
+  background: #999999; /* Old browsers */
+  background: -moz-linear-gradient(top, #efefef 0%, #999999 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #efefef 0%,#999999 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #efefef 0%,#999999 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#999999',GradientType=0 ); /* IE6-9 */  
+}
+
+.rlx5-event-addresses .rlx5-coredata-single:hover  .rlx5-buttons {
+  display: block;
+  opacity: 1;
+  transform: translate(0);
+}
+
+.rlx5-event-addresses .rlx5-coredata-single:hover .rlx5-buttons:before {
+  opacity: 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}

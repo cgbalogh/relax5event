@@ -1,0 +1,55 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  
+  <label for="registered">
+      <f:translate key="tx_relax5event_domain_model_entry.person" />
+  </label>
+  {entry.person.nameCompound} {entry.person.address.0.addressCompound}
+  <br />
+
+  <label for="registered">
+      <f:translate key="tx_relax5event_domain_model_entry.registered" />
+  </label>
+  <f:form.textfield property="registered" /><br />
+
+  <label for="participants">
+    <f:translate key="tx_relax5event_domain_model_entry.participants" />
+  </label>
+  <f:form.textfield property="participants" /><br />
+
+  <label for="phone">
+    <f:translate key="tx_relax5event_domain_model_entry.phone" />
+  </label>
+  <f:form.textfield property="phone" /><br />
+
+  <label for="email">
+    <f:translate key="tx_relax5event_domain_model_entry.email" />
+  </label>
+  <f:form.textfield property="email" /><br />
+
+  <label for="reminder">
+    <f:translate key="tx_relax5event_domain_model_entry.reminder" />
+  </label>
+  <f:form.textfield 
+    property="reminder" 
+    disabled="disabled"
+    value="{entry.reminder->f:format.date(format: '{f:translate(key: \'LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_general.datetime_format\')}')}"
+  />
+
+  <label for="message" class="rlx5-top">
+    <f:translate key="tx_relax5event_domain_model_entry.message" />
+  </label>
+  <f:form.textarea property="message" cols="40" rows="15" /><br />
+
+  <label for="result" class="rlx5-top">
+    <f:translate key="tx_relax5event_domain_model_entry.result" />
+  </label>
+  <f:form.textarea property="result" cols="40" rows="15" /><br />
+
+  <label for="message" class="rlx5-top">
+    <f:translate key="tx_relax5event_domain_model_event.message" />
+  </label>
+  <f:form.textarea name="message" value="{entry.event.message}" cols="40" rows="15" /><br />
+
+  <f:form.hidden name="execute" value="1" />
+  
+</html>

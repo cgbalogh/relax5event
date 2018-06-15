@@ -1,0 +1,15 @@
+
+# ==============================================
+# Persistence object mapping configuration
+# ==============================================
+config.tx_extbase.persistence.classes {
+	CGB\Relax5event\Domain\Model\AddressRelation {
+		mapping {
+			tableName = tx_relax5event_event_address_mm
+			columns {
+				uid_local.mapOnProperty = event
+				uid_foreign.mapOnProperty = address
+			}
+		}
+	}
+}

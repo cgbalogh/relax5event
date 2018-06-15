@@ -1,0 +1,17 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  
+<f:form.validationResults for="{object}">
+	<f:if condition="{validationResults.flattenedErrors}">
+		<ul>
+          <f:for each="{validationResults.flattenedErrors}" key="propertyPath" as="errors">
+            <f:for each="{errors}" as="error">
+              {propertyPath} {error.code} {error}
+              <f:if condition="{error}!='' && {error.code}<1">
+                <li class="rlx5-propertyerror">{error.code} {error}</li>
+              </f:if>
+            </f:for>
+          </f:for>
+        </ul>
+    </f:if>
+</f:form.validationResults>
+</html>

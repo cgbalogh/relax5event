@@ -1,0 +1,180 @@
+{namespace r5f=CGB\Relax5validator\ViewHelpers}
+
+<!-- docref BEGIN: EXT:relax5project/Resources/Private/Partials/Project/ProjectData.html v8.7 -->
+<!-- rev: 2017-07-25 -->
+<div style="position: relative">
+  <label>
+    <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_person" />/
+    <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_company" />
+  </label>
+  <f:if condition="{project.person.uid}">
+    <f:then>
+      #{project.person.uid} {project.person.lastName} {project.person.firstName}
+    </f:then>
+    <f:else if="{project.company.uid}">
+      #{project.company.uid} {project.company.name} {project.company.shortName}
+    </f:else>
+    <f:else if="{person.uid}">
+      #{person.uid} {person.lastName} {person.firstName}
+    </f:else>
+    <f:else if="{company.uid}">
+      #{company.uid} {company.name} {company.shortName}
+    </f:else>
+  </f:if>
+  <br />
+
+  <f:form.hidden property="person" value="{person.uid}" />
+  <f:form.hidden property="company" value="{company.uid}" />
+
+  <label for="name">
+    <f:translate key="tx_relax5project_domain_model_project.name" />
+  </label>
+  <f:form.textfield property="name" id="name" /><br />
+
+  <label for="description" class="rlx5-top">
+    <f:translate key="tx_relax5project_domain_model_project.description" />
+  </label>
+  <f:form.textarea property="description" id="description" cols="40" rows="15" class="rlx5-jte"/><br />
+
+  <label for="timeHorizon">
+    <f:translate key="tx_relax5project_domain_model_project.time_horizon" />
+  </label>
+  <f:form.select 
+    property="timeHorizon" 
+    id="timeHorizon"
+    options="{timeHorizons}" 
+    optionValueField="value" 
+    optionLabelField="value" 
+    size="1" 
+  />
+  <br />
+
+  <span class="rlx5-span-as-label">
+    <label for="operativeStart" class="rlx5-min">
+      <f:translate key="tx_relax5project_domain_model_project.operative_start" />
+    </label>
+    |
+    <label for="operativeStartLatest" class="rlx5-min">
+      <f:translate key="tx_relax5project_domain_model_project.operative_start_latest" />
+    </label>
+  </span>
+
+  <r5f:form.textfield 
+    property="operativeStart" 
+    id="operativeStart" 
+    value="{project.operativeStart->f:format.date( format: '{f:translate(key: \'LLL:EXT:relax5core/Resources/Private/Language/locallang.xml:tx_relax5core_general.date_format\')}' )}" 
+    class="datepicker rlx5-30" 
+    validatorContext="{validatorContext}" 
+  />
+  <r5f:form.textfield 
+    property="operativeStartLatest" 
+    id="operativeStartLatest" 
+    value="{project.operativeStartLatest->f:format.date( format: '{f:translate(key: \'LLL:EXT:relax5core/Resources/Private/Language/locallang.xml:tx_relax5core_general.date_format\')}' )}" 
+    class="datepicker rlx5-30" 
+    validatorContext="{validatorContext}" 
+  />
+  <br />
+
+  <label for="operativeEnd">
+    <f:translate key="tx_relax5project_domain_model_project.operative_end" />
+  </label>
+  <f:form.textfield property="operativeEnd" id="operativeEnd" value="{project.operativeEnd->f:format.date( format: '{f:translate(key: \'LLL:EXT:relax5core/Resources/Private/Language/locallang.xml:tx_relax5core_general.date_format\')}' )}" class="datepicker" /><br />
+
+  <label for="target">
+    <f:translate key="tx_relax5project_domain_model_project.target" />
+  </label>
+  <f:form.textfield property="target" id="target" class="rlx5-r rlx5-20" /><br />
+
+  <label for="actual">
+    <f:translate key="tx_relax5project_domain_model_project.actual" />
+  </label>
+  <f:form.textfield property="actual" id="actual" class="rlx5-r rlx5-20"/><br />
+
+  <div class="rlx5-clearer" style="margin: .5em 0; border-bottom: 1px solid #999;"></div>
+
+  <label for="projectAddress" class="rlx5-top">
+    <f:translate key="tx_relax5project_domain_model_project.address" />
+  </label>
+  <span class="rlx5-span-as-input">
+    <f:render partial="Address/ShowProjectAddresses" arguments="{item:project.person,project:project}" />
+    <f:render partial="Address/ShowProjectAddresses" arguments="{item:project.company,project:project}" />
+    <div class="rlx5-address">
+      <f:if condition="{project.person}">
+        <f:then>
+          <a:actionicon 
+            uri="{h:uri.ajaxAction(
+              extensionName: 'Relax5core',
+              controller: 'Address',
+              pluginName: 'Core',
+              action: 'new',
+              arguments: '{newAddress:newAddress, itemtype:\\'{project.person.itemtype}\\', item:project.person}'
+            )}"
+
+            class="modalDialog rlx5-button rlx5-edit"
+            title="{f:translate(key:'tx_relax5core_domain_model_address')}" 
+            domainModelObject="{project.person.item.itemtype}" 
+            intendedAction="edit"
+            action="new"
+            forceIcon="addIcon"
+            permissions="{project.person.permissions}" 
+            user="{project.person.owner}" 
+            group="{project.person.usergroup}"
+            pageType="{f:cObject(typoscriptObjectPath:'lib.relax5core.ajax')}"
+            extensionName="Relax5core"
+            pluginName="Ajax" 
+            controller="Address"
+            mapArgumentName="item->{project.person.itemtype}"
+            arguments="{newAddress:newAddress, item:project.person}"
+            additionalAttributes="{onsave: 'window.location.reload()'}"
+          />
+        </f:then>
+        <f:else>
+          <a:actionicon 
+            uri="{h:uri.ajaxAction(
+              extensionName: 'Relax5core',
+              controller: 'Address',
+              pluginName: 'Core',
+              action: 'new',
+              arguments: '{newAddress:newAddress, itemtype:\\'{project.company.itemtype}\\', item:project.company}'
+            )}"
+
+            class="modalDialog rlx5-button rlx5-edit"
+            title="{f:translate(key:'tx_relax5core_domain_model_address')}" 
+            domainModelObject="{project.company.item.itemtype}" 
+            intendedAction="edit"
+            action="new"
+            forceIcon="addIcon"
+            permissions="{project.company.permissions}" 
+            user="{project.company.owner}" 
+            group="{project.company.usergroup}"
+            pageType="{f:cObject(typoscriptObjectPath:'lib.relax5core.ajax')}"
+            extensionName="Relax5core"
+            pluginName="Ajax" 
+            controller="Address"
+            mapArgumentName="item->{project.company.itemtype}"
+            arguments="{newAddress:newAddress, item:project.company}"
+            additionalAttributes="{onsave: 'window.location.reload()'}"
+          />
+        </f:else>
+      </f:if>
+    </div>
+  </span>
+
+  <f:if condition="{new}">
+    <div class="rlx5-clearer" style="margin: .5em 0; border-bottom: 1px solid #999;"></div>
+
+    <label for="appointment">
+      <f:translate key="tx_relax5project_domain_model_appointment" />
+    </label>
+    <f:form.textfield name="data[appointment]" id="appointment" class="datetimepicker" /><br />
+
+    <script>
+      activateDatetimepicker();
+    </script>
+
+  </f:if>
+</div>
+
+
+
+<!-- docref END: EXT:relax5project/Resources/Private/Partials/Project/ProjectData.html v8.7 -->

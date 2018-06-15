@@ -1,0 +1,17 @@
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+
+<!-- docref BEGIN: EXT:relax5event/Resources/Private/Partials/Address/ShowEventAddress.html v8.7 -->
+<!-- rev: 2017-10-23 -->
+
+
+<div class="rlx5-event-addresses rlx5-item-event-addresses rlx5-addrerss rlx5-core-data-box rlx5-ispopulated">
+  <div id="addressListevent" class="rlx5-coredata-block">
+    <div class="">
+      <div id="address_{address.uid}" class="rlx5-address" uid="{address.uid}">
+        <f:render partial="Address/ShowOneEventAddress" arguments="{address:address}" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- docref END: EXT:relax5event/Resources/Private/Partials/Address/ShowEventAddress.html v8.7 -->

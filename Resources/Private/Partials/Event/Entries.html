@@ -1,0 +1,10 @@
+<v:variable.register.set name="dtfilter" value="event:{event.uid}"></v:variable.register.set>
+<v:content.render contentUids="{0:'{settings.entriesListCid}'}" />
+
+<script type="text/javascript">
+  <f:format.cdata>
+    $(document).ready(function() {
+      $('#tx_datatables-entryTable-{settings.entriesListCid}').addClass('dt-paused');
+    });
+  </f:format.cdata>
+</script>
